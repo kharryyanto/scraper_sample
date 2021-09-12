@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScrapeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('search');
 });
+
+Route::get('/search/{url?}', [ScrapeController::class, 'scrape'])->name('search');
+Route::get('/detail', [ScrapeController::class, 'details'])->name('detail');
